@@ -1,0 +1,26 @@
+---
+#Squid Packages
+squid::packages:
+         - squid
+         - calamaris
+#Name Servers
+nameservers:
+         - 127.0.0.3
+         - 192.168.2.1
+         - 193.231.252.1
+         - 213.154.124.1
+nameserver::search: bla.net
+resolv::conf: "/etc/resolv.conf"
+
+sshd_package: openssh
+sshd_port: 22
+sshd_listen: "%{::ipaddress}"
+sshd_protocol: 2
+sshd_keyfile: ".ssh/authorized_keys"
+sshd_path: "/etc/ssh/sshd_config"
+sshd::service: sshd
+
+
+#General stuff
+service_ensure: running
+service_enable: true
